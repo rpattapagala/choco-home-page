@@ -23,19 +23,47 @@
             );
             font-family:Calibri, sans-serif;
         }
-
         .header {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
         }
 
-        .content {
-            position: relative;
-            z-index: 10;
-            text-align: left;
-            margin-top: 100px;
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            padding: 15px 20px;
+            backdrop-filter: blur(6px);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ffe8c2;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            color: #f8f1e7;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .about-card {
@@ -90,7 +118,7 @@
 
         ul {
             color: #f8f1e7;
-            font-size: 1.2rem;
+            font-size: 12px;
             line-height: 1.8;
 
             display: block;          /* IMPORTANT: remove inline-block */
@@ -110,32 +138,48 @@
     </style>
 </head>
 <body>
-<div class="content">
-    <div class="header"><h1>🍫 chocolate 🍫</h1></div>
-
-<div class="about-card">
-<h2>About Me</h2>
-<p>
-I like making software, I like kindness, and I love chocolate
-</p>
-
-<p>
-    I enjoy things like
-</p>
-
-<ul>
-    <li>chess</li>
-    <li>video games</li>
-    <li>books</li>
-    <li>wordle</li>
-    <li>music</li>
-    <li>cadbury milk chocolate</li>
-</ul>
-
-    <p>
-
-    </p>
+<div class="header">
+    <h1>🍫 chocolate 🍫</h1>
 </div>
+<div class="about-card">
+
+    <h2>About Me</h2>
+    <p>
+        I like making software, I like kindness, and I love chocolate 🍫
+    </p>
+
+    <h2>Favorites Dashboard</h2>
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h3>📚 Books</h3>
+            <ul>
+                <li>Metamorphosis - Franz Kafka</li>
+                <li>Siddartha - Herman Hesse</li>
+                <li>iRobot - Isaac Asimov</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🎵 Music</h3>
+            <ul>
+                <li>HIGHEST IN THE ROOM - Travis Scott</li>
+                <li>T-Shirt - Migos</li>
+                <li>NOKIA - Drake</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🎮 Games</h3>
+            <ul>
+                <li>Final Fantasy X</li>
+                <li>Kingdom Hearts</li>
+                <li>Chocolate Factory Simulator</li>
+            </ul>
+        </div>
+
+    </div>
 </div>
 <script>
     function createChocolate() {
