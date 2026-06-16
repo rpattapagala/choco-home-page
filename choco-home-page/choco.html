@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chocolate Rain</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(
+                    180deg,
+                    #2d1810 0%,
+                    #4e2f1f 50%,
+                    #6b4226 100%
+            );
+            font-family:Calibri, sans-serif;
+        }
+
+        .header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            margin-top: 100px;
+        }
+
+        .about-card {
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 25px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            backdrop-filter: blur(6px);
+        }
+
+        .chocolate {
+            position: fixed;
+            top: -50px;
+            left: 0;
+            user-select: none;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            z-index: 1;
+        }
+
+        h1 {
+            position: relative;
+            z-index: 10;
+            font-size: 5rem;
+            color: #fff4e6;
+            text-shadow:
+                    0 0 10px rgba(255,255,255,0.4),
+                    0 0 20px rgba(255,255,255,0.2);
+            letter-spacing: 8px;
+        }
+
+        h2 {
+            color: #ffe8c2;
+            font-size: 2rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.2);
+        }
+
+        p {
+            color: #f8f1e7;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        ul {
+            color: #f8f1e7;
+            font-size: 1.2rem;
+            line-height: 1.8;
+
+            display: block;          /* IMPORTANT: remove inline-block */
+            text-align: left;
+
+            margin: 10px auto;
+            padding-left: 100px;      /* THIS controls bullet indentation */
+        }
+        @keyframes fall {
+            from {
+                transform: translate(0px, -50px) rotate(0deg);
+            }
+            to {
+                transform: translate(var(--drift), 110vh) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="header"><h1>🍫 chocolate 🍫</h1></div>
+
+<div class="about-card">
+<h2>About Me</h2>
+<p>
+I like making software, I like kindness, and I love chocolate
+</p>
+
+<p>
+    I enjoy things like
+</p>
+
+<ul>
+    <li>chess</li>
+    <li>video games</li>
+    <li>books</li>
+    <li>wordle</li>
+    <li>music</li>
+    <li>cadbury milk chocolate</li>
+</ul>
+
+    <p>
+
+    </p>
+</div>
+</div>
+<script>
+    function createChocolate() {
+        const chocolate = document.createElement("div");
+        chocolate.classList.add("chocolate");
+        chocolate.textContent = "🍫";
+
+        chocolate.style.left = Math.random() * window.innerWidth + "px";
+
+        const size = 20 + Math.random() * 40;
+        chocolate.style.fontSize = size + "px";
+
+        const duration = 4 + Math.random() * 6;
+        chocolate.style.animationDuration = duration + "s";
+        const drift = (Math.random() - 0.5) * 200;
+        chocolate.style.setProperty("--drift", `${drift}px`);
+        document.body.appendChild(chocolate);
+
+        setTimeout(() => {
+            chocolate.remove();
+        }, duration * 1000);
+    }
+
+    setInterval(createChocolate, 150);
+
+    for (let i = 0; i < 30; i++) {
+        setTimeout(createChocolate, i * 100);
+    }
+</script>
+</body>
+</html>
